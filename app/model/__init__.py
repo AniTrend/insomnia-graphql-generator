@@ -4,11 +4,15 @@ class Property:
     """Properties For Export File"""
     Id = "_id"
     Type = "_type"
-    Body = {"body", "text"}
+    Body = "body"
+    Text = "text"
+    Query = "query"
     Name = "name"
     ParentId = "parentId"
     Resources = "resources"
-    Children = "children"
+    Groups = "groups"
+    Requests = "requests"
+    Location = "location"
 
 
 class ObjectType:
@@ -27,13 +31,13 @@ class ResourceBody:
     Operation = "operationName"
 
     @staticmethod
-    def is_folder_type(resource):
-        return resource[Property.Type] is ObjectType.WorkSpace or resource[Property.Type] is ObjectType.RequestGroup
+    def is_workspace(resource):
+        return resource[Property.Type] == ObjectType.WorkSpace
+
+    @staticmethod
+    def is_request_group(resource):
+        return resource[Property.Type] == ObjectType.RequestGroup
 
     @staticmethod
     def is_request_type(resource):
-        return resource[Property.Type] is ObjectType.Request
-
-    @staticmethod
-    def create_parent_child(resource, dictionary):
-        pass
+        return resource[Property.Type] == ObjectType.Request

@@ -1,2 +1,3 @@
-# insomnia-graphql-generator
-Convert your insomnia collections to GraphQL files
+# Insomnia Collection GraphQL Generator &nbsp; &nbsp; [![Waffle.io - Columns and their card count](https://badge.waffle.io/wax911/insomnia-graphql-generator.svg?columns=all)](https://waffle.io/wax911/insomnia-graphql-generator) &nbsp; [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/wax911/insomnia-graphql-generator/blob/master/LICENSE)
+
+Small application to help you generate .graphql files from a GraphQL export workspace in insomnia so you can use it in projects like apollo for android.

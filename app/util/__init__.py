@@ -1,5 +1,6 @@
 import json
 import os
+from pathlib import Path
 
 
 class InputOutputHelper:
@@ -25,3 +26,20 @@ class InputOutputHelper:
         with open(os.path.join(input_dir, file_name)) as file:
             input_data = json.loads(file.read())
         return input_data
+
+    @staticmethod
+    def create_directory(directory_path):
+        creation_path = os.path.join(InputOutputHelper.get_output_directory(), directory_path)
+        if not os.path.exists(creation_path):
+            path = Path(creation_path)
+            path.mkdir(parents=True, exist_ok=True)
+
+    @staticmethod
+    def create_file(directory_path, filename, contents):
+        creation_path = os.path.join(InputOutputHelper.get_output_directory(), directory_path)
+        if not os.path.exists(creation_path):
+            path = Path(creation_path)
+            path.mkdir(parents=True, exist_ok=True)
+        with open(os.path.join(creation_path, filename), "w+") as writer:
+            writer.write(contents)
+        print("Created file {}".format(filename))
