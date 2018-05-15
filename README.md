@@ -1,3 +1,22 @@
-# Insomnia Collection GraphQL Generator &nbsp; &nbsp; [![Waffle.io - Columns and their card count](https://badge.waffle.io/wax911/insomnia-graphql-generator.svg?columns=all)](https://waffle.io/wax911/insomnia-graphql-generator) &nbsp; [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/wax911/insomnia-graphql-generator/blob/master/LICENSE)
+# Insomnia Collection GraphQL Generator &nbsp; &nbsp; [![Waffle.io - Columns and their card count](https://badge.waffle.io/AniTrend/insomnia-graphql-generator.svg?columns=all)](https://waffle.io/AniTrend/insomnia-graphql-generator) &nbsp; [![license](https://img.shields.io/badge/license-GPL-green.svg?style=flat-square)](https://github.com/AniTrend/insomnia-graphql-generator/blob/master/LICENSE)
 
-Small application to help you generate .graphql files from a GraphQL export workspace in insomnia so you can use it in projects like apollo for android.
+Small application to help you generate .graphql files from a GraphQL export workspace in insomnia so you can use it in projects like [Apollo](https://www.apollographql.com/]) or [retrofit-graphql](https://github.com/AniTrend/retrofit-graphql) for android.
+
+## How To Use
+
+Obviously firstly you must have [Insomnia](https://insomnia.rest/) installed and preferably isolate your GraphQL queries into their own separate Work Space which you will export. As shown in the image below:
+
+![Work Space Example](https://insomnia.rest/static/drag-ab3bee8a8fe203bb66cd1143dd89e6d3-a7281.webp)
+____
+
+![Folder or Collection Example](https://insomnia.rest/static/main-ac0a1732afac19acce5ad6825595c3bb-9a259.webp)
+
+__N.B.__ The utility can work with up to 3 nested folders _Tested_ in a given workspace. Which means in the image above To-Dos can have upto 3 levels of directories with requests
+
+## Usage
+
+Place your exported Insomnia file into the `./app/io/input` folder within this project and run the command: _Replace [filename] with the actual filename_
+
+`python3 __init__.py [filename].json`
+
+All generated files will be saved in the `./app/io/output`
