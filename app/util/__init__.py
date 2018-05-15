@@ -42,4 +42,3 @@ class InputOutputHelper:
             path.mkdir(parents=True, exist_ok=True)
         with open(os.path.join(creation_path, filename), "w+") as writer:
             writer.write(contents)
-        print("Created file {}".format(filename))

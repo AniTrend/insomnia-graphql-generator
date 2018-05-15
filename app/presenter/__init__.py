@@ -29,8 +29,11 @@ class BasePresenter:
             if ResourceBody.is_request_type(resource):
                 self.__create_resource_requests(resource)
                 continue
+        print()
+        print(f"Generated {len(resources)} resources")
 
     def __create_workspaces(self, resource):
+        print(f"Generating work space for {resource[Property.Name]}")
         self.workspaces.append({
             Property.Id: resource[Property.Id],
             Property.Name: resource[Property.Name],
@@ -61,9 +64,11 @@ class PersistencePresenter:
         self.base = base
 
     def create_directories(self):
+        print()
         self.__create_top_level()
 
     def __create_top_level(self):
+        print(f"Creating {len(self.base.workspaces)} work space directories")
         for workspace in self.base.workspaces:
             InputOutputHelper.create_directory(workspace[Property.Name])
             workspace[Property.Location] = workspace[Property.Name]
@@ -71,7 +76,7 @@ class PersistencePresenter:
                 if group[Property.ParentId] == workspace[Property.Id]:
                     group[Property.Location] = os.path.join(workspace[Property.Location], group[Property.Name])
                     InputOutputHelper.create_directory(group[Property.Location])
-            self.__create_sub_directories()
+            self.__create_sub_directories(workspace)
             self.__create_sub_files()
 
     def __key_exists_in(self, key):
@@ -80,7 +85,8 @@ class PersistencePresenter:
                 return True, group
         return False, None
 
-    def __create_sub_directories(self):
+    def __create_sub_directories(self, workspace):
+        print(f"Creating {len(self.base.resource_groups)} sub work space directories for {workspace[Property.Name]}")
         for child in self.base.resource_groups:
             exists, parent = self.__key_exists_in(child[Property.ParentId])
             if exists:
@@ -89,6 +95,7 @@ class PersistencePresenter:
                 InputOutputHelper.create_directory(child[Property.Location])
 
     def __create_sub_files(self):
+        print("Generating .graphql files into ./app/output/...")
         for group in self.base.resource_groups:
             for request in self.base.requests:
                 exists, parent = self.__key_exists_in(request[Property.ParentId])
@@ -96,7 +103,8 @@ class PersistencePresenter:
                     request_body_text = json.loads(request[Property.Body][Property.Text])
                     if request_body_text is not None and Property.Query in request_body_text:
                         InputOutputHelper.create_file(parent[Property.Location],
-                                                      "{}.graphql".format(request[Property.Name]),
+                                                      f"{request[Property.Name]}.graphql",
                                                       request_body_text[Property.Query])
                         request[Property.Location] = os.path.join(group[Property.Location],
-                                                                  "{}.graphql".format(request[Property.Name]))
+                                                                  f"{request[Property.Name]}.graphql")
+        print()
