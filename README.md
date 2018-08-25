@@ -15,8 +15,9 @@ __N.B.__ The utility can work with up to 3 nested folders _Tested_ in a given wo
 
 ## Usage
 
-Place your exported Insomnia file into the `./app/io/input` folder within this project and run the command: _Replace [filename] with the actual filename_
-
-`python3 __init__.py [filename].json`
+For all available options you can run the following command:
+```commandline
+python manage.py --help
+```
 
 All generated files will be saved in the `./app/io/output`
