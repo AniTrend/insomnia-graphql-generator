@@ -1,4 +1,4 @@
-# Insomnia Collection GraphQL Generator &nbsp; &nbsp; [![Waffle.io - Columns and their card count](https://badge.waffle.io/AniTrend/insomnia-graphql-generator.svg?columns=all)](https://waffle.io/AniTrend/insomnia-graphql-generator) &nbsp; [![license](https://img.shields.io/badge/license-GPL-green.svg?style=flat-square)](https://github.com/AniTrend/insomnia-graphql-generator/blob/master/LICENSE)
+# Insomnia Collection GraphQL Generator
 
 Small application to help you generate .graphql files from a GraphQL export workspace in insomnia so you can use it in projects like [Apollo](https://www.apollographql.com/]) or [retrofit-graphql](https://github.com/AniTrend/retrofit-graphql) for android.
 
